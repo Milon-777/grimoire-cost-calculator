@@ -1,0 +1,190 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+interface LevelCost {
+  level: number;
+  cost: number;
+}
+
+@Component({
+  selector: 'app-calculator',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './calculator.html',
+  styleUrl: './calculator.css'
+})
+export class Calculator {
+  grimoireLevels: LevelCost[] = [
+    { level: 1, cost: 0 },
+    { level: 2, cost: 3500 },
+    { level: 3, cost: 4300 },
+    { level: 4, cost: 5200 },
+    { level: 5, cost: 6200 },
+    { level: 6, cost: 7100 },
+    { level: 7, cost: 8100 },
+    { level: 8, cost: 9200 },
+    { level: 9, cost: 10300 },
+    { level: 10, cost: 11400 },
+    { level: 11, cost: 12600 },
+    { level: 12, cost: 13800 },
+    { level: 13, cost: 15100 },
+    { level: 14, cost: 16400 },
+    { level: 15, cost: 17800 },
+    { level: 16, cost: 19200 },
+    { level: 17, cost: 20600 },
+    { level: 18, cost: 22100 },
+    { level: 19, cost: 23600 },
+    { level: 20, cost: 25200 },
+    { level: 21, cost: 26800 },
+    { level: 22, cost: 28400 },
+    { level: 23, cost: 30100 },
+    { level: 24, cost: 31900 },
+    { level: 25, cost: 33700 },
+    { level: 26, cost: 35500 },
+    { level: 27, cost: 37300 },
+    { level: 28, cost: 39300 },
+    { level: 29, cost: 41200 },
+    { level: 30, cost: 43200 },
+    { level: 31, cost: 45200 },
+    { level: 32, cost: 47300 },
+    { level: 33, cost: 49400 },
+    { level: 34, cost: 51600 },
+    { level: 35, cost: 53800 },
+    { level: 36, cost: 56100 },
+    { level: 37, cost: 58400 },
+    { level: 38, cost: 60700 },
+    { level: 39, cost: 63100 },
+    { level: 40, cost: 65500 },
+    { level: 41, cost: 68000 },
+    { level: 42, cost: 70500 },
+    { level: 43, cost: 73000 },
+    { level: 44, cost: 75600 },
+    { level: 45, cost: 78200 },
+    { level: 46, cost: 80900 },
+    { level: 47, cost: 83600 },
+    { level: 48, cost: 86400 },
+    { level: 49, cost: 89200 },
+    { level: 50, cost: 92100 },
+    { level: 51, cost: 95000 },
+    { level: 52, cost: 97900 },
+    { level: 53, cost: 100900 },
+    { level: 54, cost: 103900 },
+    { level: 55, cost: 107000 },
+    { level: 56, cost: 110110 },
+    { level: 57, cost: 113200 },
+    { level: 58, cost: 116400 },
+    { level: 59, cost: 119600 },
+    { level: 60, cost: 122900 },
+    { level: 61, cost: 126200 },
+    { level: 62, cost: 129600 },
+    { level: 63, cost: 133000 },
+    { level: 64, cost: 136400 },
+    { level: 65, cost: 139900 },
+    { level: 66, cost: 143500 },
+    { level: 67, cost: 147000 },
+    { level: 68, cost: 150700 },
+    { level: 69, cost: 154300 },
+    { level: 70, cost: 158000 },
+    { level: 71, cost: 161800 },
+    { level: 72, cost: 165600 },
+    { level: 73, cost: 169400 },
+    { level: 74, cost: 173300 },
+    { level: 75, cost: 177200 },
+    { level: 76, cost: 181100 },
+    { level: 77, cost: 185200 },
+    { level: 78, cost: 189200 },
+    { level: 79, cost: 193300 },
+    { level: 80, cost: 197400 },
+    { level: 81, cost: 201600 },
+    { level: 82, cost: 205800 },
+    { level: 83, cost: 210100 },
+    { level: 84, cost: 214400 },
+    { level: 85, cost: 218700 },
+    { level: 86, cost: 223100 },
+    { level: 87, cost: 227500 },
+    { level: 88, cost: 232000 },
+    { level: 89, cost: 236500 },
+    { level: 90, cost: 241100 },
+    { level: 91, cost: 245700 },
+    { level: 92, cost: 250300 },
+    { level: 93, cost: 255000 },
+    { level: 94, cost: 259700 },
+    { level: 95, cost: 264500 },
+    { level: 96, cost: 269300 },
+    { level: 97, cost: 274200 },
+    { level: 98, cost: 279100 },
+    { level: 99, cost: 284000 },
+    { level: 100, cost: 289000 },
+    { level: 101, cost: 294000 },
+    { level: 102, cost: 299100 },
+    { level: 103, cost: 304200 },
+    { level: 104, cost: 309400 },
+    { level: 105, cost: 314600 },
+    { level: 106, cost: 319800 },
+    { level: 107, cost: 325100 },
+    { level: 108, cost: 330400 },
+    { level: 109, cost: 335800 },
+    { level: 110, cost: 341200 },
+    { level: 111, cost: 346700 },
+    { level: 112, cost: 352200 },
+    { level: 113, cost: 357700 },
+    { level: 114, cost: 363300 },
+    { level: 115, cost: 368900 },
+    { level: 116, cost: 374600 },
+    { level: 117, cost: 380300 },
+    { level: 118, cost: 386100 },
+    { level: 119, cost: 391900 },
+    { level: 120, cost: 397700 },
+    { level: 121, cost: 403600 },
+    { level: 122, cost: 409500 },
+    { level: 123, cost: 415500 },
+    { level: 124, cost: 421500 },
+    { level: 125, cost: 427600 },
+    { level: 126, cost: 433700 },
+    { level: 127, cost: 439800 },
+    { level: 128, cost: 446000 },
+    { level: 129, cost: 452200 },
+    { level: 130, cost: 458500 },
+    { level: 131, cost: 464800 },
+    { level: 132, cost: 471100 },
+    { level: 133, cost: 477500 },
+    { level: 134, cost: 484000 },
+    { level: 135, cost: 490500 },
+    { level: 136, cost: 497000 },
+    { level: 137, cost: 503500 },
+    { level: 138, cost: 510200 },
+    { level: 139, cost: 516800 },
+    { level: 140, cost: 523500 },
+    { level: 141, cost: 530200 },
+    { level: 142, cost: 537000 },
+    { level: 143, cost: 543800 },
+    { level: 144, cost: 550700 },
+    { level: 145, cost: 557600 },
+    { level: 146, cost: 564600 },
+    { level: 147, cost: 571600 },
+    { level: 148, cost: 578600 },
+    { level: 149, cost: 585700 },
+    { level: 150, cost: 592800 }
+
+  ];
+
+  currentLevel: number = 1;
+  targetLevel: number = 3;
+
+  get upgradeSteps() {
+    const startIndex = this.grimoireLevels.findIndex(l => l.level === this.currentLevel);
+    const endIndex = this.grimoireLevels.findIndex(l => l.level === this.targetLevel);
+    if (startIndex === -1 || endIndex === -1 || endIndex <= startIndex) return [];
+    return this.grimoireLevels.slice(startIndex + 1, endIndex + 1);
+  }
+
+  get totalCost() {
+    return this.upgradeSteps.reduce((sum, l) => sum + l.cost, 0);
+  }
+
+  getPreviousLevel(step: LevelCost): number | null {
+    const index = this.grimoireLevels.findIndex(l => l.level === step.level);
+    return index > 0 ? this.grimoireLevels[index - 1].level : null;
+  }
+}

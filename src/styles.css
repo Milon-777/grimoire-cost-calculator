@@ -1,0 +1,12 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at center, #120e0a 0%, #000000 90%);
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
