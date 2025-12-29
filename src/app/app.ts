@@ -1,14 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Calculator } from "./components/calculator/calculator";
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-root',
+  imports: [RouterOutlet, RouterLink, NgOptimizedImage],
   templateUrl: './app.html',
-  standalone: true,
-  styleUrl: './app.css',
-  imports: [CommonModule, Calculator]
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('Grimoire Cost Calculator');
+  protected readonly title = signal('grimoire-cost-calculator');
 }

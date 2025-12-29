@@ -1,0 +1,95 @@
+<div class="calculator-container" data-grimoire="imprint">
+  <h2>Imprint chapter</h2>
+
+  <div class="selectors">
+    <label>
+      <span>Current Level:</span>
+
+      <select
+        #selectCurrentLevel
+        [value]="currentLevel()"
+        (change)="setCurrentLevel(selectCurrentLevel.value)"
+      >
+        @for (cost of costs; track cost.level) {
+          <option [value]="cost.level">
+            {{ cost.level }}
+          </option>
+        }
+      </select>
+    </label>
+
+    <label>
+      <span>Target Level:</span>
+
+      <select
+        #selectTargetLevel
+        [value]="targetLevel()"
+        (change)="setTargetLevel(selectTargetLevel.value)"
+      >
+        @for (cost of costs; track cost.level) {
+          <option [value]="cost.level">
+            {{ cost.level }}
+          </option>
+        }
+      </select>
+    </label>
+  </div>
+
+  @if (upgradeSteps().length > 0) {
+    <div class="results">
+      <table>
+        <thead>
+          <tr>
+            <th>Upgrade</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (step of upgradeSteps(); track step.level) {
+            <tr>
+              <td>{{ step.level - 1 }} → {{ step.level }}</td>
+              <td class="cost-cell">
+                <img
+                  src="assets/grimoire-essence.png"
+                  alt="grimoire essence"
+                  class="grimoire-essence-icon"
+                />
+                {{ step.essence | number }}
+                <img
+                  src="assets/imprint-essence.png"
+                  alt="imprint essence"
+                  class="imprint-essence-icon"
+                />
+                {{ step.imprint | number }}
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="total">
+      <span>Total: </span>
+      <div class="values">
+        <strong>
+          <img
+            src="assets/grimoire-essence.png"
+            alt="grimoire essence"
+            class="grimoire-essence-icon"
+          />
+          {{ totalCost().essence | number }}
+          <img
+            src="assets/imprint-essence.png"
+            alt="imprint essence"
+            class="imprint-essence-icon"
+          />
+          {{ totalCost().imprint | number }}
+        </strong>
+        <strong> {{ totalCost().numberOfPicks | number: '1.0-2' }} event picks </strong>
+      </div>
+    </div>
+  } @else {
+    <p class="no-results">Please select valid levels.</p>
+  }
+</div>

@@ -1,0 +1,166 @@
+.calculator-container {
+  backdrop-filter: blur(6px);
+  background: var(--bg-panel);
+  border: 1px solid var(--grimoire-border);
+  border-radius: 16px;
+  box-shadow: 0 0 25px var(--grimoire-bg-soft);
+  margin: 0 auto;
+  max-width: 420px;
+  padding: 24px;
+  text-align: center;
+  transition: 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 35px var(--grimoire-glow);
+  }
+
+  h2 {
+    color: var(--grimoire-primary);
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    text-shadow: 0 0 8px var(--grimoire-glow);
+  }
+
+  .selectors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  label {
+    align-items: flex-start;
+    color: #d0dee0;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    width: 48%;
+  }
+
+  select {
+    appearance: none;
+    background-color: #1c2a2f;
+    border: 1px solid var(--grimoire-border);
+    border-radius: 8px;
+    color: var(--grimoire-text);
+    cursor: pointer;
+    font-family: inherit;
+    margin-top: 4px;
+    padding: 8px 10px;
+    transition: 0.2s ease;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      border-color: var(--grimoire-primary);
+      box-shadow: 0 0 8px var(--grimoire-glow);
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  option {
+    background-color: #122426;
+    color: #cfeff0;
+    font-size: 16px;
+    padding: 6px;
+
+    &:hover,
+    &:checked {
+      background-color: #2e5254;
+      color: #e8ffff;
+    }
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid rgb(127 209 209 / 15%);
+    padding: 10px;
+    text-align: center;
+  }
+
+  .results {
+    table {
+      border-collapse: collapse;
+      font-size: 16px;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    th {
+      background: var(--grimoire-bg-soft);
+      color: var(--grimoire-primary);
+      text-shadow: 0 0 4px var(--grimoire-glow);
+    }
+  }
+
+  tbody tr {
+    &:hover {
+      background: var(--grimoire-bg-soft);
+    }
+  }
+
+  .cost-cell {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .grimoire-essence-icon {
+    height: 24px;
+    opacity: 0.9;
+    vertical-align: bottom;
+    width: 24px;
+  }
+
+  .imprint-essence-icon {
+    height: 24px;
+    opacity: 0.9;
+    vertical-align: bottom;
+    width: 24px;
+  }
+
+  .total {
+    color: var(--grimoire-primary);
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 8px;
+    text-align: center;
+    text-shadow: 0 0 6px var(--grimoire-glow);
+
+    > .values {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+
+      > strong {
+        color: var(--grimoire-text);
+        margin-top: 6px;
+      }
+    }
+  }
+
+  .no-results {
+    font-size: 16px;
+    margin-top: 10px;
+    opacity: 0.8;
+    text-align: center;
+  }
+}
+
+@media (width <= 480px) {
+  .selectors {
+    align-items: center;
+    flex-direction: column;
+
+    label {
+      width: 100%;
+    }
+  }
+
+  .cost-cell {
+    flex-direction: column;
+  }
+}

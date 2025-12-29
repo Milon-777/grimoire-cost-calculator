@@ -1,0 +1,38 @@
+:root {
+  /* Base */
+  // --bg-main:  #0f1519;
+  // --bg-card: #161f24;
+  // --border-soft: rgba(255, 255, 255, 0.08);
+  // --text-main: #e6f4f4;
+  // --text-muted: #9fb6b6;
+  // --text-accent: #fcef7c;
+
+  --bg-main: #161f24;
+  --bg-panel: rgb(22 31 36 / 90%);
+  --border-soft: rgb(123 168 178 / 40%);
+  --text-main: #d0dee0;
+  --text-muted: #9fbfc3;
+  --text-accent: #fcef7c;
+
+  /* Enabling */
+  --enabling-primary: #45ffff;
+
+  /* Imprint */
+  --imprint-primary: #9f50fc;
+}
+
+[data-grimoire='enabling'] {
+  --grimoire-primary: #45ffff;
+  --grimoire-glow: rgb(69 255 255 / 45%);
+  --grimoire-border: rgb(69 255 255 / 35%);
+  --grimoire-bg-soft: rgb(69 255 255 / 8%);
+  --grimoire-text: #cfffff;
+}
+
+[data-grimoire='imprint'] {
+  --grimoire-primary: #9f50fc;
+  --grimoire-glow: rgb(159 80 252 / 45%);
+  --grimoire-border: rgb(159 80 252 / 35%);
+  --grimoire-bg-soft: rgb(159 80 252 / 8%);
+  --grimoire-text: #ecd9ff;
+}

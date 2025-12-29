@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@use './styles/theme';
+@import 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap';
+
+body {
+  background: linear-gradient(180deg, #1e2a30 0%, #0f171b 100%);
+  box-sizing: border-box;
+  color: #e1e8ea;
+  display: block;
+  font-family: Cinzel, serif;
+  min-height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h2 {
+  color: var(--text-main);
+}
