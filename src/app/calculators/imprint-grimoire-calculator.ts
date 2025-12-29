@@ -22,7 +22,8 @@ export class ImprintGrimoireCalculator implements GrimoireCalculator<ImprintCost
       level: targetLevel,
       essence: totalEssenceCost,
       imprint: totalImprintCost,
-      numberOfPicks: totalEssenceCost / 1_400_000,
+      essencePicks: Math.ceil(totalEssenceCost / 1_400_000),
+      imprintPicks: Math.ceil(totalImprintCost / 175_000),
     };
   }
 

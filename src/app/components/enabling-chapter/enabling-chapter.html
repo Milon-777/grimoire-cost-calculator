@@ -55,7 +55,7 @@
                   alt="grimoire essence"
                   class="grimoire-essence-icon"
                 />
-                {{ step.essence }}
+                {{ step.essence | number }}
               </td>
             </tr>
           }
@@ -74,7 +74,15 @@
           />
           {{ totalCost().essence | number }}
         </strong>
-        <strong> {{ totalCost().numberOfPicks | number: '1.0-2' }} event picks </strong>
+        <strong>
+          {{ totalCost().numberOfPicks | number }}
+          <img
+            src="assets/grimoire-essence.png"
+            alt="grimoire essence"
+            class="grimoire-essence-icon"
+          />
+          event picks
+        </strong>
       </div>
     </div>
   } @else {

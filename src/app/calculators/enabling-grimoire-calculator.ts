@@ -20,7 +20,7 @@ export class EnablingGrimoireCalculator implements GrimoireCalculator<EnablingCo
     return {
       level: targetLevel,
       essence: totalEssenceCost,
-      numberOfPicks: totalEssenceCost / 1_400_000,
+      numberOfPicks: Math.ceil(totalEssenceCost / 1_400_000),
     };
   }
 
