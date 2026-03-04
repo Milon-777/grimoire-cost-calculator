@@ -1,20 +1,21 @@
-import { IMPRINT_CHAPTER_COSTS } from '../data/imprint-chapter-costs';
-import { GrimoireCalculator } from '../types/grimoire-calculator.type';
+﻿import { IMPRINT_CHAPTER_COSTS } from '../data/imprint-chapter-costs';
+import { IMPRINT_CHAPTER_STATS } from '../data/imprint-chapter-stats';
 import { ImprintCost } from '../types/imprint-cost.type';
 import { Injectable } from '@angular/core';
+import { CALCULATOR_CONSTANTS } from '../config/calculator.constants';
+import { BaseGrimoireCalculator } from './base-grimoire-calculator';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ImprintGrimoireCalculator implements GrimoireCalculator<ImprintCost> {
-  id = 'imprint';
-  readonly costs = IMPRINT_CHAPTER_COSTS;
-
-  getCosts(): readonly ImprintCost[] {
-    return this.costs;
-  }
+export class ImprintGrimoireCalculator extends BaseGrimoireCalculator<ImprintCost> {
+  override readonly id = 'imprint';
+  override readonly costs = IMPRINT_CHAPTER_COSTS;
+  override readonly stats = IMPRINT_CHAPTER_STATS;
 
   getTotalCost(currentLevel: number, targetLevel: number): ImprintCost {
+    this.validateLevelRange(currentLevel, targetLevel);
+
     const upgradeSteps = this.getUpgradeSteps(currentLevel, targetLevel);
     const totalEssenceCost = upgradeSteps.reduce((sum, current) => sum + current.essence, 0);
     const totalImprintCost = upgradeSteps.reduce((sum, current) => sum + current.imprint, 0);
@@ -22,22 +23,8 @@ export class ImprintGrimoireCalculator implements GrimoireCalculator<ImprintCost
       level: targetLevel,
       essence: totalEssenceCost,
       imprint: totalImprintCost,
-      essencePicks: Math.ceil(totalEssenceCost / 1_400_000),
-      imprintPicks: Math.ceil(totalImprintCost / 175_000),
+      essencePicks: Math.ceil(totalEssenceCost / CALCULATOR_CONSTANTS.ESSENCE_PICKS_DIVISOR),
+      imprintPicks: Math.ceil(totalImprintCost / CALCULATOR_CONSTANTS.IMPRINT_PICKS_DIVISOR),
     };
-  }
-
-  getUpgradeSteps(currentLevel: number, targetLevel: number): readonly ImprintCost[] {
-    const startIndex = this.costs.findIndex((l) => l.level === currentLevel);
-    const endIndex = this.costs.findIndex((l) => l.level === targetLevel);
-
-    if (startIndex < 0 || endIndex <= startIndex) return [];
-
-    return this.costs.slice(startIndex + 1, endIndex + 1);
-  }
-
-  getPreviousLevel(step: ImprintCost): number | null {
-    const index = this.costs.findIndex((l) => l.level === step.level);
-    return index > 0 ? this.costs[index - 1].level : null;
   }
 }

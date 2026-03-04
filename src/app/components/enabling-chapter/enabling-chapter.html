@@ -10,7 +10,7 @@
         [value]="currentLevel()"
         (change)="setCurrentLevel(selectCurrentLevel.value)"
       >
-        @for (cost of costs; track cost.level) {
+        @for (cost of costs(); track cost.level) {
           <option [value]="cost.level">
             {{ cost.level }}
           </option>
@@ -26,22 +26,36 @@
         [value]="targetLevel()"
         (change)="setTargetLevel(selectTargetLevel.value)"
       >
-        @for (cost of costs; track cost.level) {
+        @for (cost of costs(); track cost.level) {
           <option [value]="cost.level">
             {{ cost.level }}
           </option>
         }
       </select>
     </label>
+
+    <label>
+      <span>Liberation Percentage:</span>
+
+      <input
+        #inputLiberationPercentage
+        [value]="liberationPercentage()"
+        (change)="setLiberationPercentage(inputLiberationPercentage.value)"
+        type="number"
+        inputmode="numeric"
+        pattern="[0-9]*"
+      />
+    </label>
   </div>
 
-  @if (upgradeSteps().length > 0) {
+  @if (upgradeSteps().length > 0 && liberationPercentage() > 0 && liberationPercentage() <= 100) {
     <div class="results">
       <table>
         <thead>
           <tr>
             <th>Upgrade</th>
             <th>Cost</th>
+            <th>Stats</th>
           </tr>
         </thead>
 
@@ -49,13 +63,25 @@
           @for (step of upgradeSteps(); track step.level) {
             <tr>
               <td>{{ step.level - 1 }} → {{ step.level }}</td>
-              <td class="cost-cell">
+
+              <td>
                 <img
                   src="assets/grimoire-essence.png"
                   alt="grimoire essence"
                   class="grimoire-essence-icon"
                 />
                 {{ step.essence | number }}
+              </td>
+
+              <td>
+                <div>
+                  <img src="assets/atk-icon.png" alt="grimoire atk" class="grimoire-essence-icon" />
+                  {{ stats().atk | number }}
+                </div>
+                <div>
+                  <img src="assets/hp-icon.png" alt="grimoire hp" class="grimoire-essence-icon" />
+                  {{ stats().hp | number }}
+                </div>
               </td>
             </tr>
           }
@@ -67,14 +93,6 @@
       <span>Total: </span>
       <div class="values">
         <strong>
-          <img
-            src="assets/grimoire-essence.png"
-            alt="grimoire essence"
-            class="grimoire-essence-icon"
-          />
-          {{ totalCost().essence | number }}
-        </strong>
-        <strong>
           {{ totalCost().numberOfPicks | number }}
           <img
             src="assets/grimoire-essence.png"
@@ -83,9 +101,25 @@
           />
           event picks
         </strong>
+        <strong>
+          <img
+            src="assets/grimoire-essence.png"
+            alt="grimoire essence"
+            class="grimoire-essence-icon"
+          />
+          {{ totalCost().essence | number }}
+        </strong>
+        <strong>
+          <img src="assets/atk-icon.png" alt="grimoire atk" class="grimoire-essence-icon" />
+          {{ totalStats().atk | number }}
+        </strong>
+        <strong>
+          <img src="assets/hp-icon.png" alt="grimoire hp" class="grimoire-essence-icon" />
+          {{ totalStats().hp | number }}
+        </strong>
       </div>
     </div>
   } @else {
-    <p class="no-results">Please select valid levels.</p>
+    <p class="no-results">Please select valid values.</p>
   }
 </div>

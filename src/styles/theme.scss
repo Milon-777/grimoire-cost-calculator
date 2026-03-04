@@ -36,3 +36,16 @@
   --grimoire-bg-soft: rgb(159 80 252 / 8%);
   --grimoire-text: #ecd9ff;
 }
+
+/* Calculator component styles */
+[data-grimoire='enabling'],
+[data-grimoire='imprint'] {
+  --calculator-label-text: #d0dee0;
+  --calculator-input-bg: #1c2a2f;
+  --calculator-option-bg: #122426;
+  --calculator-option-text: #cfeff0;
+  --calculator-option-bg-hover: #2e5254;
+  --calculator-option-text-hover: #e8ffff;
+  --calculator-table-border: 1px solid rgb(127 209 209 / 15%);
+  --calculator-icon-size: 24px;
+}

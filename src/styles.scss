@@ -16,3 +16,15 @@ body {
 h2 {
   color: var(--text-main);
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  appearance: textfield;
+  appearance: textfield;
+  appearance: textfield;
+}
