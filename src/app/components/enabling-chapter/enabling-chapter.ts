@@ -14,8 +14,10 @@ export class EnablingChapter {
 
   readonly currentLevel = signal(1);
   readonly targetLevel = signal(1);
+  readonly liberationPercentage = signal(1);
 
-  readonly costs = this.calculator.getCosts();
+  readonly costs = computed(() => this.calculator.costs);
+  readonly stats = computed(() => this.calculator.getStats(this.liberationPercentage()));
 
   readonly upgradeSteps = computed(() => {
     return this.calculator.getUpgradeSteps(this.currentLevel(), this.targetLevel());
@@ -25,11 +27,28 @@ export class EnablingChapter {
     return this.calculator.getTotalCost(this.currentLevel(), this.targetLevel());
   });
 
-  setCurrentLevel(value: string) {
-    return this.currentLevel.set(Number(value));
+  readonly totalStats = computed(() => {
+    return this.calculator.getTotalStats(
+      this.currentLevel(),
+      this.targetLevel(),
+      this.liberationPercentage(),
+    );
+  });
+
+  setCurrentLevel(value: string): void {
+    this.currentLevel.set(Number(value));
   }
 
-  setTargetLevel(value: string) {
-    return this.targetLevel.set(Number(value));
+  setTargetLevel(value: string): void {
+    this.targetLevel.set(Number(value));
+  }
+
+  setLiberationPercentage(value: string): void {
+    const percentage = Number(value);
+    if (percentage < 0 || percentage > 100) {
+      console.warn('Liberation percentage must be between 0 and 100');
+      return;
+    }
+    this.liberationPercentage.set(percentage);
   }
 }
