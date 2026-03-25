@@ -9,6 +9,7 @@
         #selectCurrentLevel
         [value]="currentLevel()"
         (change)="setCurrentLevel(selectCurrentLevel.value)"
+        name="currentLevel"
       >
         @for (cost of costs(); track cost.level) {
           <option [value]="cost.level">
@@ -25,6 +26,7 @@
         #selectTargetLevel
         [value]="targetLevel()"
         (change)="setTargetLevel(selectTargetLevel.value)"
+        name="targetLevel"
       >
         @for (cost of costs(); track cost.level) {
           <option [value]="cost.level">
@@ -44,6 +46,7 @@
         type="number"
         inputmode="numeric"
         pattern="[0-9]*"
+        name="liberationPercentage"
       />
     </label>
   </div>

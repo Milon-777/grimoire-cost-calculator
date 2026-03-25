@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { EnablingChapter } from './components/enabling-chapter/enabling-chapter';
-import { ImprintChapter } from './components/imprint-chapter/imprint-chapter';
 
 export const routes: Routes = [
   {
     path: 'enablingChapter',
-    component: EnablingChapter,
+    loadComponent: () =>
+      import('./components/enabling-chapter/enabling-chapter').then((m) => m.EnablingChapter),
   },
   {
     path: 'imprintChapter',
-    component: ImprintChapter,
+    loadComponent: () =>
+      import('./components/imprint-chapter/imprint-chapter').then((m) => m.ImprintChapter),
   },
 ];

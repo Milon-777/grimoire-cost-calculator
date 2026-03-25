@@ -1,6 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
 @use './styles/theme';
-@import 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap';
+
+@font-face {
+  font-display: swap;
+  font-family: Cinzel;
+  src: url('fonts/Cinzel-Regular.woff2') format('woff2');
+}
 
 body {
   background: linear-gradient(180deg, #1e2a30 0%, #0f171b 100%);
@@ -24,7 +28,5 @@ input::-webkit-inner-spin-button {
 }
 
 input[type='number'] {
-  appearance: textfield;
-  appearance: textfield;
   appearance: textfield;
 }

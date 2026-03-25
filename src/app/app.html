@@ -1,29 +1,41 @@
-<h2>Grimoire Cost Calculator</h2>
-<nav>
-  <div class="calculator-container enabling" routerLink="/enablingChapter">
-    <div class="enabling-chapter image-container">
-      <img
-        ngSrc="assets/enabling-grimoire.png"
-        width="115"
-        height="100"
-        alt="Enabling chapter grimoire image"
-      />
+<header>
+  <h2>Grimoire Cost Calculator</h2>
+  <nav>
+    <div class="calculator-container enabling" routerLink="/enablingChapter">
+      <div class="enabling-chapter image-container">
+        <img
+          ngSrc="assets/enabling-grimoire.webp"
+          srcset="assets/enabling-grimoire.webp 115w, assets/enabling-grimoire@2x.webp 230w"
+          sizes="(max-width: 600px) 115px, 230px"
+          width="115"
+          height="100"
+          alt="Enabling chapter grimoire image"
+          priority
+        />
+      </div>
+      <p>Enabling Chapter cost</p>
     </div>
-    <p>Enabling Chapter cost</p>
-  </div>
-  <div class="calculator-container imprint" routerLink="/imprintChapter">
-    <div class="imprint-chapter image-container">
-      <img
-        ngSrc="assets/imprint-grimoire.png"
-        width="115"
-        height="100"
-        alt="Imprint chapter grimoire image"
-      />
+    <div class="calculator-container imprint" routerLink="/imprintChapter">
+      <div class="imprint-chapter image-container">
+        <img
+          ngSrc="assets/imprint-grimoire.webp"
+          srcset="assets/imprint-grimoire.webp 115w, assets/imprint-grimoire@2x.webp 230w"
+          sizes="(max-width: 600px) 115px, 230px"
+          width="115"
+          height="100"
+          alt="Imprint chapter grimoire image"
+          priority
+        />
+      </div>
+      <p>Imprint Chapter cost</p>
     </div>
-    <p>Imprint Chapter cost</p>
-  </div>
-</nav>
-<router-outlet />
+  </nav>
+</header>
+
+<main>
+  <router-outlet />
+</main>
+
 <footer class="footer">
   <span>Made by <strong>Milon</strong> with💙</span><br />
   <small>If you have any offers or ideas DM me on Discord: <code>.milon</code></small>
